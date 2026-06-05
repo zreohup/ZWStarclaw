@@ -40,7 +40,7 @@ scripts/ - Environment detection and setup automation.
 ## Important Files
 
 - `app/src/components/BirthForm.tsx` - birth input, birthplace matching entry, and true solar time options.
-- `app/src/components/SettingsPanel.tsx` - fixed Nodekey provider display, API key, BaseURL, model fetching, and AI settings.
+- `app/src/components/SettingsPanel.tsx` - flat Nodekey settings form with API key, BaseURL, model fetching, and AI toggles.
 - `app/src/lib/llm.ts` - LLM adapter and OpenAI-compatible model discovery through NodeKey.
 - `app/src/lib/llm.test.ts` - model discovery success and failure tests.
 - `app/src/lib/true-solar-time.ts` - true solar time calculation and birthplace matching helpers.

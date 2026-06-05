@@ -15,6 +15,8 @@
 
 - Replaced the `AI 厂商` selector with a fixed Nodekey display and removed the
   intermediate API hint banner from settings.
+- Removed the `高级设置` accordion so Nodekey BaseURL, model, model fetching,
+  thinking, and web-search controls sit directly under API Key.
 - Added a `获取模型` action beside the Model field to query `/models` with the
   user's API Key and BaseURL, then select from returned model IDs; added timeout,
   empty-result feedback, and unit coverage for success and failure paths.
