@@ -1,7 +1,7 @@
-# 紫微知道
+# 紫薇Claw
 
 <p align="center">
-  <img width="820" alt="紫微知道" src="./assets/logo.ja.svg" />
+  <img width="820" alt="紫薇Claw" src="./assets/logo.ja.svg" />
 </p>
 
 <p align="center">
@@ -14,7 +14,7 @@
 
 ## 概要
 
-紫微知道は、伝統的な紫微斗数の知識、モダンな Web UI、複数モデル対応の AI を組み合わせたセルフホスト可能なアプリです。
+紫薇Clawは、伝統的な紫微斗数の知識、モダンな Web UI、複数モデル対応の AI を組み合わせたセルフホスト可能なアプリです。
 
 命盤を表示するだけでなく、「理解しやすいこと」「使いやすいこと」「共有しやすいこと」を重視しています。
 
@@ -30,9 +30,10 @@
 ## はじめに
 
 ```bash
-git clone https://github.com/ruijayfeng/ziwei.git
-cd ziwei/app
-npm install
+git clone https://github.com/zreohup/ZWStarclaw.git
+cd ZWStarclaw
+bash scripts/setup-env.sh
+cd app
 npm run dev
 ```
 
@@ -40,12 +41,19 @@ npm run dev
 
 ### Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ruijayfeng/ziwei&project-name=ziwei&root-directory=app)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/zreohup/ZWStarclaw&project-name=zwstarclaw&root-directory=app)
 
 ### Cloudflare Pages
 
-[![Deploy to Cloudflare Pages](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ruijayfeng/ziwei)
+[![Deploy to Cloudflare Pages](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/zreohup/ZWStarclaw)
+
+### Docker
+
+```bash
+docker compose up --build -d
+# or: docker-compose up --build -d
+```
 
 ## 設定
 
-アプリ内の設定画面から LLM API を設定できます。OpenAI-compatible API に加えて、Kimi、Gemini、Claude、DeepSeek なども利用できます。
+アプリ内の設定画面では、元の provider レイアウトを維持しています。推奨設定は「Custom (OpenAI compatible)」で、既定の BaseURL は `https://nodekey.xinghanyun.cn/v1` です。NodeKey API Key と利用可能なモデル名を入力してください。

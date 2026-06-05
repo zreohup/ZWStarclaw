@@ -25,30 +25,24 @@ Reasons:
 Consequence: dataset license and source attribution must remain tracked under
 `docs/licenses/`.
 
-## D003 - Deployment Uses a Mirror Repository
+## D003 - Deployment Is Direct From ZWStarclaw
 
-`ruijayfeng/ziwei` is the development source. `ruijayfeng/zwknows` is the fork or
-mirror connected to Vercel. The source repository syncs to the deployment mirror
-through GitHub Actions.
+`zreohup/ZWStarclaw` is the canonical repository for this commercial build.
+Deployment should use this repository directly through static hosting from `app/`
+or the root Docker image.
 
-Consequence: Vercel does not need to point at the source repository. Sync failures
-should be debugged in GitHub Actions first, then by checking refs:
+Consequence: do not reintroduce legacy mirror synchronization unless a new
+deployment repository is explicitly created.
 
-```powershell
-git ls-remote origin refs/heads/main
-git ls-remote zwknows refs/heads/main
-```
+## D004 - Docker Is The Portable Production Runtime
 
-## D004 - Sync Workflow Is Source-Repository Scoped
+The app remains a static frontend, but the repository includes a Docker runtime
+using an Nginx static server so it can be deployed on ordinary servers without a
+Node.js process in production.
 
-The sync workflow includes a repository guard so other forks do not push to the
-user's deployment mirror.
-
-Consequence: keep this condition unless the deployment model changes:
-
-```yaml
-if: github.repository == 'ruijayfeng/ziwei'
-```
+Consequence: Docker changes should preserve SPA fallback routing through
+`nginx.conf` and should still allow static-hosting platforms to build from
+`app/`.
 
 ## D005 - Documentation Is Part of the Deliverable
 
@@ -66,6 +60,16 @@ documentation impact explicit before work is accepted.
 Consequence: feature, bug, and task issues should identify documentation impact.
 Pull requests must treat documentation updates as part of the same deliverable as
 code and tests.
+
+## D007 - Commercial Build Keeps Provider Layout With NodeKey BaseURL
+
+The commercially authorized local build keeps the original provider settings
+layout. NodeKey is provided by setting the custom OpenAI-compatible provider's
+default BaseURL to `https://nodekey.xinghanyun.cn/v1`.
+
+Consequence: future AI settings changes should not replace the provider panel
+layout with a single-provider model picker unless the product requirement
+changes.
 
 [PROTOCOL]: Add a new decision when a choice affects future implementation,
 deployment, product behavior, or contributor workflow.

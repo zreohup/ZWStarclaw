@@ -1,6 +1,6 @@
 <svg width="1280" height="360" viewBox="0 0 1280 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">&#32043;&#24494;&#30693;&#36947;</title>
-  <desc id="desc">&#32043;&#24494;&#30693;&#36947;&#32321;&#39636;&#20013;&#25991;&#27178;&#21521;&#20027;&#35222;&#35258;&#12290;</desc>
+  <title id="title">&#32043;&#34183;Claw</title>
+  <desc id="desc">&#32043;&#34183;Claw&#32321;&#39636;&#20013;&#25991;&#27178;&#21521;&#20027;&#35222;&#35258;&#12290;</desc>
   <defs>
     <linearGradient id="ink" x1="367" y1="126" x2="820" y2="222" gradientUnits="userSpaceOnUse"><stop stop-color="#151515"/><stop offset="0.62" stop-color="#29212F"/><stop offset="1" stop-color="#493CCB"/></linearGradient>
     <linearGradient id="star" x1="168" y1="63" x2="263" y2="238" gradientUnits="userSpaceOnUse"><stop stop-color="#D8A94E"/><stop offset="0.55" stop-color="#7B62D9"/><stop offset="1" stop-color="#1F1B2A"/></linearGradient>
@@ -13,8 +13,8 @@
   </g>
   <g stroke="#171717" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M180 101C210 117 252 115 281 96"/><path d="M191 92C204 59 251 51 280 84"/><path d="M266 82C283 85 297 97 305 115"/><path d="M154 247C144 234 143 219 153 207"/><path d="M331 260C349 254 365 260 374 275"/></g>
   <path d="M291 97L298 115L317 121L298 127L291 145L284 127L265 121L284 115L291 97Z" fill="url(#star)"/><circle cx="323" cy="84" r="4" fill="#493CCB"/><circle cx="147" cy="201" r="3.5" fill="#B8893B"/><path d="M94 107C126 73 164 60 208 69" stroke="#CDBA94" stroke-width="1.2" stroke-linecap="round"/><path d="M320 142C351 132 380 137 405 158" stroke="#CDBA94" stroke-width="1.2" stroke-linecap="round"/>
-  <text x="430" y="162" fill="url(#ink)" font-family="'Noto Serif TC', 'Noto Serif CJK TC', 'Songti TC', serif" font-size="82" font-weight="700" letter-spacing="13">&#32043;&#24494;&#30693;&#36947;</text>
+  <text x="430" y="162" fill="url(#ink)" font-family="'Noto Serif TC', 'Noto Serif CJK TC', 'Songti TC', serif" font-size="82" font-weight="700" letter-spacing="5">&#32043;&#34183;Claw</text>
   <text x="437" y="211" fill="#7A7182" font-family="'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif" font-size="24" font-weight="400" letter-spacing="4">&#35731;&#21629;&#30436;&#35498;&#20986;&#31572;&#26696;</text>
-  <text x="437" y="252" fill="#9A8456" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="400" letter-spacing="7">ZIWEI KNOWS</text>
+  <text x="437" y="252" fill="#9A8456" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="400" letter-spacing="7">ZIWEI CLAW</text>
   <path d="M437 277H772" stroke="#D8CCB7" stroke-width="1.2" stroke-linecap="round"/>
 </svg>

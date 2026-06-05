@@ -13,7 +13,6 @@ import { YearlyFortune } from '@/components/fortune'
 import { LifeKLine } from '@/components/kline'
 import { KLineIcon } from '@/components/icons/KLineIcon'
 import { MatchAnalysis } from '@/components/match'
-import { GitHubLinkButton, OpenSourceFooterLinks } from '@/components/OpenSourceLinks'
 import { ShareCard } from '@/components/share'
 import { useChartStore } from '@/stores'
 
@@ -77,7 +76,7 @@ export default function App() {
                   "
                   style={{ fontFamily: 'var(--font-serif)' }}
                 >
-                  紫微知道
+                  紫薇Claw
                 </h1>
                 <p className="text-text-muted text-xs hidden sm:block">
                   AI 命理工具
@@ -136,8 +135,6 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-2">
-            <GitHubLinkButton />
-
             {/* 设置按钮 */}
             <button
               onClick={() => setShowSettings(true)}
@@ -316,21 +313,6 @@ export default function App() {
           </div>
         </div>
       )}
-
-      {/* 底部 - 仅桌面端显示 */}
-      <footer
-        className="
-          hidden md:block
-          py-6 text-center text-text-muted text-sm
-          border-t border-white/[0.04]
-        "
-      >
-        <p className="flex items-center justify-center gap-2">
-          <span className="text-gold/60">☆</span>
-          紫微知道 · 开源命理工具 · <OpenSourceFooterLinks />
-          <span className="text-star/60">☆</span>
-        </p>
-      </footer>
 
       <Analytics />
     </div>

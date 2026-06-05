@@ -307,7 +307,7 @@ export function ShareCard() {
           {/* 底部水印 */}
           <div style={{ marginTop: '16px', paddingTop: '12px', borderTop: '1px solid rgba(212, 175, 55, 0.1)', textAlign: 'center' }}>
             <p style={{ color: 'rgba(212, 175, 55, 0.3)', fontSize: '12px', letterSpacing: '0.2em', margin: 0 }}>
-              ─── 紫微知道 ───
+              ─── 紫薇Claw ───
             </p>
           </div>
         </div>

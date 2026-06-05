@@ -22,6 +22,8 @@ Primary runtime flow:
 5. App state stores the chart and user selections.
 6. UI renders chart, fortune, match, K-line, share, and AI interpretation views.
 7. Knowledge retrieval grounds AI prompts with local structured guidance.
+8. AI interpretation uses the provider selected in settings; the custom
+   OpenAI-compatible provider defaults to the NodeKey BaseURL.
 
 ## App Module Map
 
@@ -32,19 +34,23 @@ app/src/lib/ - Business logic helpers and calculation support.
 app/src/stores/ - Zustand state.
 app/src/knowledge-db/ - Structured guidance database and retrieval pipeline.
 app/src/knowledge/ - Static Zi Wei Dou Shu knowledge modules.
-app/tests/ - Tests outside source tree, currently including workflow validation.
+scripts/ - Environment detection and setup automation.
 </directory>
 
 ## Important Files
 
 - `app/src/components/BirthForm.tsx` - birth input, birthplace matching entry, and true solar time options.
-- `app/src/components/OpenSourceLinks.tsx` - GitHub repository and license links for open source attribution.
+- `app/src/components/SettingsPanel.tsx` - model provider, API key, BaseURL, and AI settings.
+- `app/src/lib/llm.ts` - multi-provider LLM adapter; custom provider defaults to NodeKey.
 - `app/src/lib/true-solar-time.ts` - true solar time calculation and birthplace matching helpers.
 - `app/src/lib/birthplace-data.json` - local city/region coordinate dataset.
 - `app/src/lib/birth-date.ts` - birth date handling.
 - `app/src/lib/astro.ts` - chart-facing astrology helpers.
 - `app/src/knowledge-db/retrieval/retrieve.ts` - guidance retrieval.
-- `.github/workflows/sync-zwknows.yml` - deployment mirror synchronization.
+- `Dockerfile` - production container build for the static app.
+- `docker-compose.yml` - local Docker startup.
+- `scripts/setup-env.sh` - OS detection and dependency setup.
+- `docs/deployment.md` - deployment and startup guide.
 
 ## Data Sources
 
@@ -57,7 +63,8 @@ app/tests/ - Tests outside source tree, currently including workflow validation.
 - UI components should call business helpers instead of embedding calculation logic.
 - `app/src/lib/` owns deterministic data transformation and calculation helpers.
 - `app/src/knowledge-db/` owns retrieval data and prompt-grounding context.
-- Workflow tests under `app/tests/` protect repository automation contracts.
+- Add cross-cutting app tests under `app/tests/` when behavior spans multiple
+  source modules.
 
 [PROTOCOL]: Update this file when module ownership, data flow, important files, or
 source data changes.

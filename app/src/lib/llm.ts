@@ -26,6 +26,8 @@ export interface StreamCallbacks {
   onError?: (error: Error) => void
 }
 
+export const NODEKEY_BASE_URL = 'https://nodekey.xinghanyun.cn/v1'
+
 /* ------------------------------------------------------------
    Provider 配置（导出供设置面板使用）
    ------------------------------------------------------------ */
@@ -48,8 +50,8 @@ export const PROVIDER_CONFIGS: Record<ModelProvider, { baseUrl: string; defaultM
     defaultModel: 'deepseek-v4-pro',
   },
   custom: {
-    baseUrl: '',
-    defaultModel: '',
+    baseUrl: NODEKEY_BASE_URL,
+    defaultModel: 'gpt-4o-mini',
   },
 }
 

@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="820" alt="紫微知道" src="./docs/assets/logo.svg" />
+  <img width="820" alt="紫薇Claw" src="./docs/assets/logo.svg" />
 </p>
 
 <p align="center">
@@ -18,21 +18,18 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ruijayfeng/ziwei"><img alt="Stars" src="https://img.shields.io/github/stars/ruijayfeng/ziwei?style=social" /></a>
-  <a href="https://github.com/ruijayfeng/ziwei"><img alt="Forks" src="https://img.shields.io/github/forks/ruijayfeng/ziwei?style=social" /></a>
-  <a href="https://github.com/ruijayfeng/ziwei/blob/main/LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-green.svg" /></a>
   <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5.9-blue" /></a>
   <a href="https://react.dev/"><img alt="React" src="https://img.shields.io/badge/React-19-61DAFB" /></a>
   <a href="https://vite.dev/"><img alt="Vite" src="https://img.shields.io/badge/Vite-7-646CFF" /></a>
 </p>
 
 <p align="center">
-  <img width="1920" height="911" alt="紫微知道界面预览" src="https://github.com/user-attachments/assets/756c0de6-e31c-4166-913e-c2d0afd1cf15" />
+  <img width="1920" height="911" alt="紫薇Claw界面预览" src="https://github.com/user-attachments/assets/756c0de6-e31c-4166-913e-c2d0afd1cf15" />
 </p>
 
 ## 概览
 
-紫微知道把传统紫微斗数知识、现代前端交互和多模型 AI 能力整合到一个可自部署的 Web 应用中。
+紫薇Claw把传统紫微斗数知识、现代前端交互和多模型 AI 能力整合到一个可自部署的 Web 应用中。
 
 它不只是展示命盘，而是围绕“看得懂、用得上、方便分享”这三件事，提供更完整的分析体验。
 
@@ -54,14 +51,15 @@
 - Zustand
 - ECharts / Recharts
 - `iztro`
-- OpenAI-compatible LLM API
+- Multi-provider LLM adapter with NodeKey as the default OpenAI-compatible BaseURL
 
 ## 快速开始
 
 ```bash
-git clone https://github.com/ruijayfeng/ziwei.git
-cd ziwei/app
-npm install
+git clone https://github.com/zreohup/ZWStarclaw.git
+cd ZWStarclaw
+bash scripts/setup-env.sh
+cd app
 npm run dev
 ```
 
@@ -69,15 +67,33 @@ npm run dev
 
 ## 部署
 
+### Docker
+
+```bash
+docker compose up --build -d
+```
+
+如果本机 Docker 只提供旧版独立 Compose 命令，使用：
+
+```bash
+docker-compose up --build -d
+```
+
+默认访问地址为 `http://127.0.0.1:8080/`。如需修改端口：
+
+```bash
+ZWSTARCLAW_PORT=3000 docker compose up --build -d
+```
+
 ### Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ruijayfeng/ziwei&project-name=ziwei&root-directory=app)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/zreohup/ZWStarclaw&project-name=zwstarclaw&root-directory=app)
 
 点击仓库部署按钮或手动导入项目时，将 **Root Directory** 设置为 `app`。
 
 ### Cloudflare Pages
 
-[![Deploy to Cloudflare Pages](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ruijayfeng/ziwei)
+[![Deploy to Cloudflare Pages](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/zreohup/ZWStarclaw)
 
 - Framework preset: `Vite`
 - Root directory: `app`
@@ -86,16 +102,18 @@ npm run dev
 
 ## 配置
 
-在应用内打开设置，即可配置 LLM API。
+在应用内打开设置，模型 provider 保留原有布局。推荐选择
+**自定义（OpenAI 兼容）**，默认 BaseURL 为
+`https://nodekey.xinghanyun.cn/v1`，并填写 NodeKey API Key 与可用模型名。
 
-支持接入 OpenAI-compatible 接口，也可配置以下服务：
+## 代码位置
 
-| 服务商 | 地址 |
-| --- | --- |
-| Kimi | https://platform.moonshot.cn/ |
-| Gemini | https://ai.google.dev/ |
-| Claude | https://console.anthropic.com/ |
-| DeepSeek | https://platform.deepseek.com/ |
+- `app/src/` - 前端源码
+- `app/src/components/SettingsPanel.tsx` - 模型 provider 设置界面
+- `app/src/lib/llm.ts` - 多 provider 适配与 NodeKey 默认 BaseURL
+- `Dockerfile` / `docker-compose.yml` / `nginx.conf` - Docker 部署
+- `scripts/setup-env.sh` - 系统环境检测与依赖安装脚本
+- `docs/deployment.md` - 部署与启动说明
 
 ## 项目结构
 
@@ -137,16 +155,7 @@ app/
 ### 分享卡片
 <img width="1920" height="911" alt="分享卡片" src="https://github.com/user-attachments/assets/921faecb-a35f-4386-85bf-89abf03f69d9" />
 
-## 开源协议
-
-MIT License
-
 ## 致谢
 
 - [iztro](https://github.com/SylarLong/iztro)
 - [lifekline](https://github.com/AICryptoHK/lifekline)
-- [ClaudeCode 镜像站](https://www.aicodemirror.com/register?invitecode=R2A5HD)
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=ruijayfeng/ziwei&type=Date)](https://star-history.com/#ruijayfeng/ziwei&Date)

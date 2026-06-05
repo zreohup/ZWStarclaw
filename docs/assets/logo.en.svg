@@ -1,6 +1,6 @@
 <svg width="1280" height="360" viewBox="0 0 1280 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Ziwei Knows</title>
-  <desc id="desc">Horizontal brand visual for Ziwei Knows with a minimal French line drawing portrait.</desc>
+  <title id="title">紫薇Claw</title>
+  <desc id="desc">Horizontal brand visual for 紫薇Claw with a minimal French line drawing portrait.</desc>
   <defs>
     <linearGradient id="ink" x1="367" y1="126" x2="880" y2="222" gradientUnits="userSpaceOnUse"><stop stop-color="#151515"/><stop offset="0.62" stop-color="#29212F"/><stop offset="1" stop-color="#493CCB"/></linearGradient>
     <linearGradient id="star" x1="168" y1="63" x2="263" y2="238" gradientUnits="userSpaceOnUse"><stop stop-color="#D8A94E"/><stop offset="0.55" stop-color="#7B62D9"/><stop offset="1" stop-color="#1F1B2A"/></linearGradient>
@@ -13,7 +13,7 @@
   </g>
   <g stroke="#171717" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M180 101C210 117 252 115 281 96"/><path d="M191 92C204 59 251 51 280 84"/><path d="M266 82C283 85 297 97 305 115"/><path d="M154 247C144 234 143 219 153 207"/><path d="M331 260C349 254 365 260 374 275"/></g>
   <path d="M291 97L298 115L317 121L298 127L291 145L284 127L265 121L284 115L291 97Z" fill="url(#star)"/><circle cx="323" cy="84" r="4" fill="#493CCB"/><circle cx="147" cy="201" r="3.5" fill="#B8893B"/><path d="M94 107C126 73 164 60 208 69" stroke="#CDBA94" stroke-width="1.2" stroke-linecap="round"/><path d="M320 142C351 132 380 137 405 158" stroke="#CDBA94" stroke-width="1.2" stroke-linecap="round"/>
-  <text x="430" y="165" fill="url(#ink)" font-family="Georgia, 'Times New Roman', serif" font-size="78" font-weight="500" letter-spacing="1">Ziwei Knows</text>
+  <text x="430" y="165" fill="url(#ink)" font-family="'Noto Serif SC', Georgia, 'Times New Roman', serif" font-size="78" font-weight="500" letter-spacing="1">紫薇Claw</text>
   <text x="437" y="216" fill="#7A7182" font-family="'Inter', Arial, sans-serif" font-size="24" font-weight="400" letter-spacing="2">The stars speak through your chart</text>
   <text x="437" y="255" fill="#9A8456" font-family="'Inter', Arial, sans-serif" font-size="16" font-weight="500" letter-spacing="8">AI EASTERN ASTROLOGY READING</text>
   <path d="M437 277H772" stroke="#D8CCB7" stroke-width="1.2" stroke-linecap="round"/>

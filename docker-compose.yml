@@ -1,0 +1,11 @@
+name: zwstarclaw
+
+services:
+  zwstarclaw:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: zwstarclaw:local
+    ports:
+      - "${ZWSTARCLAW_PORT:-8080}:80"
+    restart: unless-stopped

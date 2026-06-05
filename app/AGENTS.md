@@ -35,7 +35,6 @@ Targeted examples:
 ```powershell
 npm run test -- true-solar-time
 npm run test -- retrieve
-npm run test -- sync-zwknows
 ```
 
 ## Member List
@@ -49,11 +48,11 @@ npm run test -- sync-zwknows
 
 `src/components/ui/`: Small reusable UI primitives.
 
-`src/components/OpenSourceLinks.tsx`: GitHub repository and license links for
-open source attribution in the app shell.
-
 `src/lib/`: Business helpers for date handling, astrology support, true solar
 time, birthplace data, LLM wiring, and scoring.
+
+`src/lib/llm.ts`: Multi-provider LLM adapter; the custom OpenAI-compatible
+provider defaults to the NodeKey BaseURL.
 
 `src/lib/true-solar-time.ts`: True solar time and birthplace matching logic.
 
@@ -66,7 +65,7 @@ matching.
 
 `src/stores/`: Zustand state boundaries.
 
-`tests/`: Tests that sit outside `src`, including workflow contract tests.
+`tests/`: Tests that sit outside `src` when cross-cutting app tests are needed.
 
 ## Change Rules
 
@@ -74,8 +73,6 @@ matching.
 - True solar time changes must protect users from needing raw longitude, latitude,
   or manual minute correction unless explicitly requested later.
 - Birthplace matching changes should be tested against realistic city input.
-- Workflow changes should keep the source repository guard and deployment mirror
-  intent intact.
 - Documentation changes are required for meaningful app behavior, module, command,
   or workflow changes.
 
@@ -86,7 +83,8 @@ matching.
 - UI component change: run `npm run lint`, relevant tests, and browser-check the
   changed flow when practical.
 - Build or dependency change: run `npm run build`.
-- GitHub workflow change: run `npm run test -- sync-zwknows`.
+- Deployment script or Docker change: run `npm run build` and validate the
+  script or Docker command path where practical.
 
 [PROTOCOL]: Update this file when app structure, commands, key files, or app-level
 development rules change.

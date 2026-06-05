@@ -23,10 +23,12 @@ npm run test
 npm run build
 ```
 
-For deployment mirror workflow edits:
+For deployment script changes:
 
 ```powershell
-npm run test -- sync-zwknows
+bash scripts/setup-env.sh --check-only --skip-npm
+docker compose config
+# or: docker-compose config
 ```
 
 ## Documentation Gate
@@ -71,47 +73,32 @@ matching documentation is incomplete.
 For code changes, include fresh verification evidence. If a command is not run,
 state the reason in the PR.
 
-## GitHub Sync to Vercel Repository
+## Deployment
 
-Source repo: `ruijayfeng/ziwei`
+Canonical repository: `zreohup/ZWStarclaw`
 
-Deployment mirror: `ruijayfeng/zwknows`
-
-The workflow `.github/workflows/sync-zwknows.yml` runs on pushes to `main`.
-It pushes source `main` to `zwknows/main` with `--force-with-lease`.
-
-Required GitHub secret on `ruijayfeng/ziwei`:
-
-```text
-ZWKNOWS_SYNC_TOKEN
-```
-
-The token must have access to `ruijayfeng/zwknows` and include permissions needed
-to update workflow files, currently `repo` and `workflow` for a classic PAT.
-
-## Sync Debugging
-
-Check recent runs:
+Local development:
 
 ```powershell
-gh run list --repo ruijayfeng/ziwei --workflow "Sync zwknows deployment repository" --limit 3 --json databaseId,status,conclusion,headSha,url
+bash scripts/setup-env.sh
+cd app
+npm run dev
 ```
 
-Inspect a run:
+Docker production runtime:
 
 ```powershell
-gh run view <run-id> --repo ruijayfeng/ziwei --json status,conclusion,attempt,headSha,url
-gh run view <run-id> --repo ruijayfeng/ziwei --log
+docker compose up --build -d
+# or: docker-compose up --build -d
 ```
 
-Compare refs:
+Static hosting platforms:
 
-```powershell
-git ls-remote origin refs/heads/main
-git ls-remote zwknows refs/heads/main
-```
+- Root directory: `app`
+- Build command: `npm run build`
+- Output directory: `dist`
 
-Both refs should match after a successful sync.
+See `docs/deployment.md` for user-facing deployment steps.
 
 [PROTOCOL]: Update this file when commands, CI, GitHub, Vercel, or release flow
 changes.

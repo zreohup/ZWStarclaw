@@ -11,7 +11,7 @@ export const KNOWLEDGE_SOURCES: KnowledgeSource[] = [
   {
     id: 'project.analysis-position',
     type: 'project-principle',
-    title: '紫微知道分析口径',
+    title: '紫薇Claw分析口径',
     note: '项目自定口径：以命盘事实为骨架，三合星情打底，四化动态校正，本命、大限、流年分层，吉凶并陈，避免绝对断事。',
   },
   {

@@ -1,6 +1,6 @@
 <svg width="1280" height="360" viewBox="0 0 1280 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">&#32043;&#24494;&#30693;&#36947;</title>
-  <desc id="desc">&#32043;&#24494;&#30693;&#36947;&#30340;&#27178;&#21521;&#20027;&#35270;&#35273;&#65292;&#21253;&#21547;&#26497;&#31616;&#27861;&#24335;&#32447;&#25551;&#20154;&#29289;&#21644;&#20013;&#25991;&#20135;&#21697;&#21517;&#12290;</desc>
+  <title id="title">&#32043;&#34183;Claw</title>
+  <desc id="desc">&#32043;&#34183;Claw&#30340;&#27178;&#21521;&#20027;&#35270;&#35273;&#65292;&#21253;&#21547;&#26497;&#31616;&#27861;&#24335;&#32447;&#25551;&#20154;&#29289;&#21644;&#20013;&#25991;&#20135;&#21697;&#21517;&#12290;</desc>
   <defs>
     <linearGradient id="ink" x1="367" y1="126" x2="820" y2="222" gradientUnits="userSpaceOnUse">
       <stop stop-color="#151515"/>
@@ -56,9 +56,9 @@
   </g>
 
   <g text-anchor="middle">
-    <text x="790" y="162" fill="url(#ink)" font-family="'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', SimSun, serif" font-size="82" font-weight="700" letter-spacing="13">&#32043;&#24494;&#30693;&#36947;</text>
+    <text x="790" y="162" fill="url(#ink)" font-family="'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', SimSun, serif" font-size="82" font-weight="700" letter-spacing="5">&#32043;&#34183;Claw</text>
     <text x="790" y="211" fill="#7A7182" font-family="'Noto Sans SC', 'Microsoft YaHei', Arial, sans-serif" font-size="24" font-weight="400" letter-spacing="4">&#35753;&#26143;&#30424;&#24320;&#21475;&#35828;&#35805;</text>
-    <text x="790" y="252" fill="#9A8456" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="400" letter-spacing="7">ZIWEI KNOWS</text>
+    <text x="790" y="252" fill="#9A8456" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="400" letter-spacing="7">ZIWEI CLAW</text>
     <path d="M640 277H940" stroke="#D8CCB7" stroke-width="1.2" stroke-linecap="round"/>
   </g>
 </svg>

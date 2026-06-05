@@ -1,7 +1,7 @@
-# 紫微知道
+# 紫薇Claw
 
 <p align="center">
-  <img width="820" alt="紫微知道" src="./assets/logo.zh-TW.svg" />
+  <img width="820" alt="紫薇Claw" src="./assets/logo.zh-TW.svg" />
 </p>
 
 <p align="center">
@@ -14,7 +14,7 @@
 
 ## 概覽
 
-紫微知道把傳統紫微斗數知識、現代前端互動和多模型 AI 能力整合到一個可自部署的 Web 應用中。
+紫薇Claw把傳統紫微斗數知識、現代前端互動和多模型 AI 能力整合到一個可自部署的 Web 應用中。
 
 它不只是展示命盤，而是圍繞「看得懂、用得上、方便分享」這三件事，提供更完整的分析體驗。
 
@@ -30,9 +30,10 @@
 ## 快速開始
 
 ```bash
-git clone https://github.com/ruijayfeng/ziwei.git
-cd ziwei/app
-npm install
+git clone https://github.com/zreohup/ZWStarclaw.git
+cd ZWStarclaw
+bash scripts/setup-env.sh
+cd app
 npm run dev
 ```
 
@@ -40,12 +41,19 @@ npm run dev
 
 ### Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ruijayfeng/ziwei&project-name=ziwei&root-directory=app)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/zreohup/ZWStarclaw&project-name=zwstarclaw&root-directory=app)
 
 ### Cloudflare Pages
 
-[![Deploy to Cloudflare Pages](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/ruijayfeng/ziwei)
+[![Deploy to Cloudflare Pages](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/zreohup/ZWStarclaw)
+
+### Docker
+
+```bash
+docker compose up --build -d
+# or: docker-compose up --build -d
+```
 
 ## 設定
 
-在應用內開啟設定，即可配置 LLM API。支援 OpenAI-compatible 介面，也可配置 Kimi、Gemini、Claude、DeepSeek 等服務。
+在應用內開啟設定，模型 provider 保留原有版面。建議選擇「自訂（OpenAI 相容）」，預設 BaseURL 為 `https://nodekey.xinghanyun.cn/v1`，並填入 NodeKey API Key 與可用模型名。

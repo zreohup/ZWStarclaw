@@ -16,30 +16,26 @@ If the task touches deployment, also read `docs/dev/workflow.md`.
 
 ## Project Position
 
-Ziwei is a React + TypeScript + Vite Zi Wei Dou Shu charting application. It
+ZWStarclaw is a React + TypeScript + Vite Zi Wei Dou Shu charting application. It
 combines chart generation, true solar time correction, birthplace coordinate
 matching, structured knowledge retrieval, AI interpretation, and deployment
-through a mirrored Vercel repository.
+as a static web app or Docker container.
 
 ## Repository Map
 
 <directory>
 app/ - Web application source, tests, build config, and frontend assets.
-docs/ - User-facing docs, licenses, plans, and development memory.
-01-* / - Domain reference notes for chart calculation.
-02-* / - Domain reference notes for stars.
-03-* / - Domain reference notes for palaces.
-04-* / - Domain reference notes for sihua.
-05-* / - Domain reference notes for pattern judgment.
-06-* / - Domain reference notes for fortune cycles.
-99-* / - Source and reference collection.
-.github/workflows/ - CI and repository synchronization automation.
+docs/ - User-facing docs, deployment notes, plans, and development memory.
+scripts/ - Local setup and environment automation.
+.github/ - Issue and pull request templates.
 </directory>
 
 <config>
 app/package.json - npm scripts and frontend dependencies.
 app/vite.config.ts - Vite build and test configuration.
-.github/workflows/sync-zwknows.yml - Mirrors `ruijayfeng/ziwei/main` to `ruijayfeng/zwknows/main`.
+Dockerfile - Production container build.
+docker-compose.yml - Local Docker runtime.
+nginx.conf - Static SPA runtime configuration.
 </config>
 
 ## Commands
@@ -51,7 +47,6 @@ npm run dev
 npm run lint
 npm run test
 npm run build
-npm run test -- sync-zwknows
 ```
 
 Useful repository checks from root:
@@ -60,7 +55,6 @@ Useful repository checks from root:
 git status --short --branch
 git log --oneline -n 8
 git ls-remote origin refs/heads/main
-git ls-remote zwknows refs/heads/main
 ```
 
 ## Documentation Is Code
@@ -93,10 +87,9 @@ A change is not complete until code, tests, and documentation agree.
 
 ## Current Deployment Model
 
-`ruijayfeng/ziwei` is the source repository. `ruijayfeng/zwknows` is the
-deployment mirror used by Vercel. Pushes to `ziwei/main` trigger a GitHub Actions
-workflow that force-with-lease syncs `zwknows/main` using the
-`ZWKNOWS_SYNC_TOKEN` repository secret.
+`zreohup/ZWStarclaw` is the canonical repository. Deployment is direct from this
+repository, either by static hosting from `app/` or by the production Docker
+image defined at the repository root. There is no deployment mirror workflow.
 
 [PROTOCOL]: Update this file when the top-level architecture, commands, deployment
 model, or documentation contract changes.

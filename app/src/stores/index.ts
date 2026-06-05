@@ -120,6 +120,47 @@ const DEFAULT_PROVIDER_SETTINGS: ProviderSettings = {
   customModel: '',
 }
 
+type PersistedSettingsState = Partial<{
+  provider: string
+  providerSettings: Record<string, Partial<ProviderSettings>>
+  enableThinking: boolean
+  enableWebSearch: boolean
+  searchApiKey: string
+}>
+
+function normalizeProviderSettings(settings?: Partial<ProviderSettings>): ProviderSettings {
+  return {
+    apiKey: typeof settings?.apiKey === 'string' ? settings.apiKey : '',
+    customBaseUrl: typeof settings?.customBaseUrl === 'string' ? settings.customBaseUrl : '',
+    customModel: typeof settings?.customModel === 'string' ? settings.customModel : '',
+  }
+}
+
+function migrateSettingsState(persistedState: unknown): Partial<SettingsState> {
+  if (!persistedState || typeof persistedState !== 'object') return {}
+
+  const state = persistedState as PersistedSettingsState
+  const providerSettings = state.providerSettings || {}
+  const migratedSettings = {
+    kimi: normalizeProviderSettings(providerSettings.kimi),
+    gemini: normalizeProviderSettings(providerSettings.gemini),
+    claude: normalizeProviderSettings(providerSettings.claude),
+    deepseek: normalizeProviderSettings(providerSettings.deepseek),
+    custom: normalizeProviderSettings(providerSettings.custom || providerSettings.nodekey),
+  }
+  const provider: ModelProvider = ['kimi', 'gemini', 'claude', 'deepseek', 'custom'].includes(state.provider || '')
+    ? state.provider as ModelProvider
+    : 'custom'
+
+  return {
+    provider,
+    providerSettings: migratedSettings,
+    enableThinking: typeof state.enableThinking === 'boolean' ? state.enableThinking : false,
+    enableWebSearch: typeof state.enableWebSearch === 'boolean' ? state.enableWebSearch : false,
+    searchApiKey: typeof state.searchApiKey === 'string' ? state.searchApiKey : '',
+  }
+}
+
 interface SettingsState {
   provider: ModelProvider
   providerSettings: Record<ModelProvider, ProviderSettings>
@@ -140,7 +181,7 @@ interface SettingsState {
 export const useSettingsStore = create<SettingsState>()(
   persist(
     (set, get) => ({
-      provider: 'kimi',
+      provider: 'custom',
       providerSettings: {
         kimi: { ...DEFAULT_PROVIDER_SETTINGS },
         gemini: { ...DEFAULT_PROVIDER_SETTINGS },
@@ -175,6 +216,8 @@ export const useSettingsStore = create<SettingsState>()(
     }),
     {
       name: 'ziwei-settings',
+      version: 3,
+      migrate: migrateSettingsState,
     }
   )
 )
