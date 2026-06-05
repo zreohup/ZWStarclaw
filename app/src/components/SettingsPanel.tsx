@@ -3,31 +3,14 @@
    配置 API Key、模型选择等
    ============================================================ */
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSettingsStore } from '@/stores'
-import { Button, Input, Select } from '@/components/ui'
-import type { ModelProvider } from '@/lib/llm'
+import { Button, Input } from '@/components/ui'
 import {
   fetchOpenAICompatibleModels,
   PROVIDER_CONFIGS,
   type OpenAICompatibleModel,
 } from '@/lib/llm'
-
-/* ------------------------------------------------------------
-   厂商选项
-   ------------------------------------------------------------ */
-
-const PROVIDER_OPTIONS: Array<{ value: ModelProvider; label: string }> = [
-  { value: 'custom', label: '自定义 (OpenAI 兼容)' },
-]
-
-const API_DOCS: Record<ModelProvider, string> = {
-  kimi: 'https://platform.kimi.ai',
-  gemini: 'https://aistudio.google.com/apikey',
-  claude: 'https://console.anthropic.com',
-  deepseek: 'https://platform.deepseek.com',
-  custom: '',
-}
 
 /* ------------------------------------------------------------
    设置面板
@@ -51,8 +34,14 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
     setSearchApiKey,
   } = useSettingsStore()
 
-  // 当前厂商的配置
-  const currentSettings = providerSettings[provider]
+  useEffect(() => {
+    if (provider !== 'custom') {
+      setProvider('custom')
+    }
+  }, [provider, setProvider])
+
+  // NodeKey 使用 OpenAI 兼容协议，对应内部 custom 配置。
+  const currentSettings = providerSettings.custom
 
   const [localApiKey, setLocalApiKey] = useState(currentSettings.apiKey)
   const [localBaseUrl, setLocalBaseUrl] = useState(currentSettings.customBaseUrl)
@@ -60,7 +49,6 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
   const [localSearchApiKey, setLocalSearchApiKey] = useState(searchApiKey)
   const [showAdvanced, setShowAdvanced] = useState(false)
   const [saved, setSaved] = useState(false)
-  const [pendingProvider, setPendingProvider] = useState<ModelProvider | null>(null)
   const [availableModels, setAvailableModels] = useState<OpenAICompatibleModel[]>([])
   const [modelsLoading, setModelsLoading] = useState(false)
   const [modelsError, setModelsError] = useState<string | null>(null)
@@ -72,52 +60,10 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
     localModel !== currentSettings.customModel ||
     localSearchApiKey !== searchApiKey
 
-  // 切换厂商时，检查是否有未保存修改
-  const handleProviderChange = (newProvider: ModelProvider) => {
-    if (newProvider === provider) return
-
-    if (hasUnsavedChanges) {
-      setPendingProvider(newProvider)
-    } else {
-      switchToProvider(newProvider)
-    }
-  }
-
-  // 实际切换厂商
-  const switchToProvider = (newProvider: ModelProvider) => {
-    setProvider(newProvider)
-    const newSettings = providerSettings[newProvider]
-    setLocalApiKey(newSettings.apiKey)
-    setLocalBaseUrl(newSettings.customBaseUrl)
-    setLocalModel(newSettings.customModel)
-    setPendingProvider(null)
-  }
-
-  // 保存并切换
-  const handleSaveAndSwitch = () => {
-    updateCurrentProvider({
-      apiKey: localApiKey,
-      customBaseUrl: localBaseUrl,
-      customModel: localModel,
-    })
-    setSearchApiKey(localSearchApiKey)
-    if (pendingProvider) {
-      switchToProvider(pendingProvider)
-    }
-  }
-
-  // 放弃修改并切换
-  const handleDiscardAndSwitch = () => {
-    if (pendingProvider) {
-      switchToProvider(pendingProvider)
-    }
-  }
-
-  // 当前厂商的默认配置
-  const defaultConfig = PROVIDER_CONFIGS[provider]
-  const docUrl = API_DOCS[provider]
+  const defaultConfig = PROVIDER_CONFIGS.custom
 
   const handleSave = () => {
+    setProvider('custom')
     updateCurrentProvider({
       apiKey: localApiKey,
       customBaseUrl: localBaseUrl,
@@ -158,34 +104,6 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
 
   return (
     <div className="glass p-6 w-full max-w-md relative">
-      {/* 未保存修改确认对话框 */}
-      {pendingProvider && (
-        <div className="absolute inset-0 bg-black/60 rounded-2xl flex items-center justify-center z-10 p-4">
-          <div className="bg-night-light p-5 rounded-xl max-w-sm w-full space-y-4">
-            <p className="text-text-secondary text-sm">
-              当前配置有未保存的修改，切换厂商将丢失这些修改。
-            </p>
-            <div className="flex gap-3">
-              <Button
-                onClick={handleDiscardAndSwitch}
-                className="flex-1 !bg-white/10 hover:!bg-white/20"
-              >
-                放弃修改
-              </Button>
-              <Button onClick={handleSaveAndSwitch} className="flex-1">
-                保存并切换
-              </Button>
-            </div>
-            <button
-              onClick={() => setPendingProvider(null)}
-              className="w-full text-sm text-text-muted hover:text-text transition-colors"
-            >
-              取消
-            </button>
-          </div>
-        </div>
-      )}
-
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-semibold">设置</h2>
         {onClose && (
@@ -198,19 +116,15 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
         )}
       </div>
 
-      {/* 横幅提示 */}
-      <div className="mb-4 p-3 rounded-lg bg-star/10 border border-star/20 text-sm text-text-secondary">
-        <span className="text-star">ⓘ</span> 使用中转 API？展开下方「高级设置」修改 URL 和模型
-      </div>
-
       <div className="space-y-4">
-        {/* 厂商选择 */}
-        <Select
-          label="AI 厂商"
-          options={PROVIDER_OPTIONS}
-          value={provider}
-          onChange={(e) => handleProviderChange(e.target.value as ModelProvider)}
-        />
+        <div>
+          <label className="block text-sm text-text-secondary mb-1.5">
+            AI 厂商
+          </label>
+          <div className="w-full px-3 py-2 rounded-lg text-sm bg-white/5 border border-white/10 text-text">
+            Nodekey
+          </div>
+        </div>
 
         {/* API Key */}
         <Input
@@ -220,16 +134,6 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
           value={localApiKey}
           onChange={(e) => setLocalApiKey(e.target.value)}
         />
-
-        {/* API 文档链接 */}
-        {docUrl && (
-          <p className="text-xs text-text-muted">
-            获取 API Key:{' '}
-            <a href={docUrl} target="_blank" rel="noopener" className="text-star hover:underline">
-              {docUrl.replace('https://', '')}
-            </a>
-          </p>
-        )}
 
         {/* 高级设置折叠区 */}
         <div className="border-t border-white/10 pt-4">
@@ -387,15 +291,13 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
                     启用联网搜索
                   </span>
                   <p className="text-xs text-text-muted">
-                    {provider === 'kimi' || provider === 'gemini'
-                      ? '使用原生搜索能力'
-                      : '需配置 Tavily API'}
+                    需配置 Tavily API
                   </p>
                 </div>
               </label>
 
-              {/* Tavily API Key (非 Kimi/Gemini 显示) */}
-              {enableWebSearch && provider !== 'kimi' && provider !== 'gemini' && (
+              {/* Tavily API Key */}
+              {enableWebSearch && (
                 <div>
                   <label className="block text-sm text-text-secondary mb-1.5">
                     Tavily API Key

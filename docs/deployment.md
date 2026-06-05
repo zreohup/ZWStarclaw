@@ -5,7 +5,7 @@
 The application source lives in `app/`.
 
 - `app/src/` - React and TypeScript application code.
-- `app/src/lib/llm.ts` - OpenAI-compatible LLM requests and model discovery with NodeKey as the default custom BaseURL.
+- `app/src/lib/llm.ts` - OpenAI-compatible LLM requests and model discovery through NodeKey.
 - `app/src/components/SettingsPanel.tsx` - provider settings UI.
 - `Dockerfile`, `docker-compose.yml`, `nginx.conf` - Docker production runtime.
 - `scripts/setup-env.sh` - system environment detection and dependency setup.
@@ -49,6 +49,6 @@ For Vercel or Cloudflare Pages:
 - Build command: `npm run build`
 - Output directory: `dist`
 
-The app is a static frontend. AI access is configured through the Custom
-OpenAI-compatible provider. API keys are configured in the browser settings panel
-and stored locally in the browser.
+The app is a static frontend. AI access is configured through the fixed Nodekey
+provider. API keys are configured in the browser settings panel and stored
+locally in the browser.

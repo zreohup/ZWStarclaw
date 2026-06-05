@@ -13,8 +13,8 @@
 
 ## Recently Completed
 
-- Limited the visible `AI 厂商` selector to custom OpenAI-compatible access and
-  set its default BaseURL to NodeKey.
+- Replaced the `AI 厂商` selector with a fixed Nodekey display and removed the
+  intermediate API hint banner from settings.
 - Added a `获取模型` action beside the Model field to query `/models` with the
   user's API Key and BaseURL, then select from returned model IDs; added timeout,
   empty-result feedback, and unit coverage for success and failure paths.

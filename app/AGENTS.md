@@ -52,9 +52,8 @@ npm run test -- llm
 `src/lib/`: Business helpers for date handling, astrology support, true solar
 time, birthplace data, LLM wiring, and scoring.
 
-`src/lib/llm.ts`: LLM adapter and OpenAI-compatible model discovery; the visible
-provider selector exposes only the custom provider, defaulting to the NodeKey
-BaseURL.
+`src/lib/llm.ts`: LLM adapter and OpenAI-compatible model discovery; settings
+show Nodekey as the fixed AI provider with the NodeKey BaseURL.
 
 `src/lib/llm.test.ts`: Unit coverage for OpenAI-compatible model discovery
 success and failure handling.
