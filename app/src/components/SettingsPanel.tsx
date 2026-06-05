@@ -44,7 +44,6 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
   const currentSettings = providerSettings.custom
 
   const [localApiKey, setLocalApiKey] = useState(currentSettings.apiKey)
-  const [localBaseUrl, setLocalBaseUrl] = useState(currentSettings.customBaseUrl)
   const [localModel, setLocalModel] = useState(currentSettings.customModel)
   const [localSearchApiKey, setLocalSearchApiKey] = useState(searchApiKey)
   const [saved, setSaved] = useState(false)
@@ -55,7 +54,6 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
   // 检查是否有未保存的修改
   const hasUnsavedChanges =
     localApiKey !== currentSettings.apiKey ||
-    localBaseUrl !== currentSettings.customBaseUrl ||
     localModel !== currentSettings.customModel ||
     localSearchApiKey !== searchApiKey
 
@@ -65,7 +63,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
     setProvider('custom')
     updateCurrentProvider({
       apiKey: localApiKey,
-      customBaseUrl: localBaseUrl,
+      customBaseUrl: '',
       customModel: localModel,
     })
     setSearchApiKey(localSearchApiKey)
@@ -80,7 +78,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
     try {
       const models = await fetchOpenAICompatibleModels(
         localApiKey,
-        localBaseUrl || defaultConfig.baseUrl
+        defaultConfig.baseUrl
       )
       setAvailableModels(models)
       if (models.length === 0) {
@@ -98,7 +96,6 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
   }
 
   // 判断是否有自定义值（用于高亮显示）
-  const hasCustomBaseUrl = localBaseUrl.trim() !== ''
   const hasCustomModel = localModel.trim() !== ''
 
   return (
@@ -133,33 +130,6 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
           value={localApiKey}
           onChange={(e) => setLocalApiKey(e.target.value)}
         />
-
-        {/* BaseURL */}
-        <div>
-          <label className="block text-sm text-text-secondary mb-1.5">
-            BaseURL
-            {hasCustomBaseUrl && <span className="text-amber ml-2 text-xs">已覆盖</span>}
-          </label>
-          <input
-            type="text"
-            placeholder={defaultConfig.baseUrl}
-            value={localBaseUrl}
-            onChange={(e) => setLocalBaseUrl(e.target.value)}
-            className={`
-              w-full px-3 py-2 rounded-lg text-sm
-              bg-white/5 border transition-colors
-              placeholder:text-text-muted/50
-              focus:outline-none focus:ring-1
-              ${hasCustomBaseUrl
-                ? 'border-amber/50 focus:border-amber focus:ring-amber/30 text-text'
-                : 'border-white/10 focus:border-star focus:ring-star/30 text-text-secondary'
-              }
-            `}
-          />
-          <p className="text-xs text-text-muted mt-1">
-            默认: {defaultConfig.baseUrl}
-          </p>
-        </div>
 
         {/* Model */}
         <div>

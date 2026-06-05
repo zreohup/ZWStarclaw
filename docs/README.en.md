@@ -56,4 +56,4 @@ docker compose up --build -d
 
 ## Configuration
 
-Open the in-app settings to configure AI access. The AI provider is fixed to Nodekey. Keep the default BaseURL `https://nodekey.xinghanyun.cn/v1`, then enter the NodeKey API key plus an available model name.
+Open the in-app settings to configure AI access. The AI provider is fixed to Nodekey, and the relay endpoint is managed by the app. Enter the NodeKey API key plus an available model name.

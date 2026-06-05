@@ -56,4 +56,4 @@ docker compose up --build -d
 
 ## 設定
 
-アプリ内の設定画面では、AI provider は Nodekey に固定されています。既定の BaseURL は `https://nodekey.xinghanyun.cn/v1` です。NodeKey API Key と利用可能なモデル名を入力してください。
+アプリ内の設定画面では、AI provider は Nodekey に固定され、リレーエンドポイントはアプリ内部で管理されます。NodeKey API Key と利用可能なモデル名を入力してください。

@@ -150,7 +150,13 @@ function migrateSettingsState(persistedState: unknown): Partial<SettingsState> {
   }
   return {
     provider: 'custom',
-    providerSettings: migratedSettings,
+    providerSettings: {
+      ...migratedSettings,
+      custom: {
+        ...migratedSettings.custom,
+        customBaseUrl: '',
+      },
+    },
     enableThinking: typeof state.enableThinking === 'boolean' ? state.enableThinking : false,
     enableWebSearch: typeof state.enableWebSearch === 'boolean' ? state.enableWebSearch : false,
     searchApiKey: typeof state.searchApiKey === 'string' ? state.searchApiKey : '',
@@ -189,7 +195,7 @@ export const useSettingsStore = create<SettingsState>()(
       enableWebSearch: false,
       searchApiKey: '',
 
-      setProvider: (provider) => set({ provider }),
+      setProvider: () => set({ provider: 'custom' }),
 
       updateCurrentProvider: (settings) => set((state) => ({
         providerSettings: {
@@ -212,7 +218,7 @@ export const useSettingsStore = create<SettingsState>()(
     }),
     {
       name: 'ziwei-settings',
-      version: 3,
+      version: 4,
       migrate: migrateSettingsState,
     }
   )

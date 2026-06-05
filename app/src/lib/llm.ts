@@ -71,7 +71,7 @@ export async function fetchOpenAICompatibleModels(
 
   const normalizedBaseUrl = baseUrl.trim().replace(/\/+$/, '')
   if (!normalizedBaseUrl) {
-    throw new Error('请先填写 BaseURL')
+    throw new Error('Nodekey 地址未配置')
   }
 
   const controller = new AbortController()
@@ -88,9 +88,9 @@ export async function fetchOpenAICompatibleModels(
     })
   } catch (error) {
     if (error instanceof DOMException && error.name === 'AbortError') {
-      throw new Error('模型获取超时，请检查 BaseURL 或网络')
+      throw new Error('模型获取超时，请检查 Nodekey 中转站或网络')
     }
-    throw new Error('模型获取失败，请检查 API Key、BaseURL 或网络权限')
+    throw new Error('模型获取失败，请检查 API Key、Nodekey 中转站或网络权限')
   } finally {
     clearTimeout(timeoutId)
   }

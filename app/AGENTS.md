@@ -53,7 +53,7 @@ npm run test -- llm
 time, birthplace data, LLM wiring, and scoring.
 
 `src/lib/llm.ts`: LLM adapter and OpenAI-compatible model discovery; settings
-show Nodekey as the fixed AI provider with the NodeKey BaseURL.
+show Nodekey as the fixed AI provider and keep the Nodekey endpoint internal.
 
 `src/lib/llm.test.ts`: Unit coverage for OpenAI-compatible model discovery
 success and failure handling.

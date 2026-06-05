@@ -223,7 +223,6 @@ export function LifeKLine() {
     return {
       provider,
       apiKey: settings.apiKey,
-      baseUrl: settings.customBaseUrl || undefined,
       model: settings.customModel || undefined,
       enableThinking,
       enableWebSearch,

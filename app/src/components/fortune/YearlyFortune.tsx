@@ -246,7 +246,6 @@ ${guidanceContext}
       const config: LLMConfig = {
         provider,
         apiKey: currentSettings.apiKey,
-        baseUrl: currentSettings.customBaseUrl || undefined,
         model: currentSettings.customModel || undefined,
         enableThinking,
         enableWebSearch,

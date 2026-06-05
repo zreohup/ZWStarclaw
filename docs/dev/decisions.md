@@ -64,8 +64,9 @@ code and tests.
 ## D007 - Commercial Build Fixes AI Access To Nodekey
 
 The commercially authorized local build shows `Nodekey` as a fixed AI provider
-instead of offering an `AI 厂商` selector. NodeKey uses the OpenAI-compatible
-default BaseURL `https://nodekey.xinghanyun.cn/v1`.
+instead of offering an `AI 厂商` selector. NodeKey uses the internal
+OpenAI-compatible endpoint `https://nodekey.xinghanyun.cn/v1`; users do not edit
+this endpoint in the frontend.
 
 Consequence: future AI settings changes should not reintroduce provider choices
 unless the product requirement changes.

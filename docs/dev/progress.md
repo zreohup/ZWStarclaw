@@ -8,17 +8,17 @@
 - Source repository: `zreohup/ZWStarclaw`
 - Deployment model: direct static hosting from `app/` or Docker from the
   repository root.
-- Working tree contains the commercial branding, NodeKey BaseURL, cleanup, and
+- Working tree contains the commercial branding, fixed Nodekey endpoint, cleanup, and
   deployment changes for the first ZWStarclaw push.
 
 ## Recently Completed
 
 - Replaced the `AI 厂商` selector with a fixed Nodekey display and removed the
   intermediate API hint banner from settings.
-- Removed the `高级设置` accordion so Nodekey BaseURL, model, model fetching,
+- Removed the `高级设置` accordion so Nodekey model, model fetching,
   thinking, and web-search controls sit directly under API Key.
 - Added a `获取模型` action beside the Model field to query `/models` with the
-  user's API Key and BaseURL, then select from returned model IDs; added timeout,
+  user's API Key against the fixed Nodekey endpoint, then select from returned model IDs; added timeout,
   empty-result feedback, and unit coverage for success and failure paths.
 - Renamed the visible product brand to 紫薇Claw across the app shell, generated
   share card watermark, and public docs assets.

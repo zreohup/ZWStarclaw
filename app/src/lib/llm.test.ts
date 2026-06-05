@@ -52,6 +52,6 @@ describe('fetchOpenAICompatibleModels', () => {
 
     await expect(
       fetchOpenAICompatibleModels('nk-test', 'https://nodekey.xinghanyun.cn/v1')
-    ).rejects.toThrow('模型获取失败，请检查 API Key、BaseURL 或网络权限')
+    ).rejects.toThrow('模型获取失败，请检查 API Key、Nodekey 中转站或网络权限')
   })
 })
