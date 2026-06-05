@@ -14,10 +14,6 @@ import { PROVIDER_CONFIGS } from '@/lib/llm'
    ------------------------------------------------------------ */
 
 const PROVIDER_OPTIONS: Array<{ value: ModelProvider; label: string }> = [
-  { value: 'kimi', label: 'Kimi (月之暗面)' },
-  { value: 'gemini', label: 'Gemini (Google)' },
-  { value: 'claude', label: 'Claude (Anthropic)' },
-  { value: 'deepseek', label: 'DeepSeek' },
   { value: 'custom', label: '自定义 (OpenAI 兼容)' },
 ]
 
@@ -294,7 +290,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
                     启用深度思考
                   </span>
                   <p className="text-xs text-text-muted">
-                    需模型支持 (Claude/DeepSeek/Gemini 等)
+                    需当前 OpenAI 兼容模型支持 thinking / reasoning 参数
                   </p>
                 </div>
               </label>

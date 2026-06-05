@@ -56,4 +56,4 @@ docker compose up --build -d
 
 ## 設定
 
-在應用內開啟設定，模型 provider 保留原有版面。建議選擇「自訂（OpenAI 相容）」，預設 BaseURL 為 `https://nodekey.xinghanyun.cn/v1`，並填入 NodeKey API Key 與可用模型名。
+在應用內開啟設定，`AI 廠商` 僅保留「自訂（OpenAI 相容）」。預設 BaseURL 為 `https://nodekey.xinghanyun.cn/v1`，填入 NodeKey API Key 與可用模型名即可。

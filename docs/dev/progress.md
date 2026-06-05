@@ -13,8 +13,8 @@
 
 ## Recently Completed
 
-- Restored the original model provider settings layout and set the custom
-  OpenAI-compatible provider BaseURL to NodeKey.
+- Limited the visible `AI 厂商` selector to custom OpenAI-compatible access and
+  set its default BaseURL to NodeKey.
 - Renamed the visible product brand to 紫薇Claw across the app shell, generated
   share card watermark, and public docs assets.
 - Added Docker, Docker Compose, Nginx SPA routing, and an environment detection

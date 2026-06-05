@@ -61,15 +61,14 @@ Consequence: feature, bug, and task issues should identify documentation impact.
 Pull requests must treat documentation updates as part of the same deliverable as
 code and tests.
 
-## D007 - Commercial Build Keeps Provider Layout With NodeKey BaseURL
+## D007 - Commercial Build Exposes Only Custom OpenAI Provider
 
-The commercially authorized local build keeps the original provider settings
-layout. NodeKey is provided by setting the custom OpenAI-compatible provider's
-default BaseURL to `https://nodekey.xinghanyun.cn/v1`.
+The commercially authorized local build exposes only the custom
+OpenAI-compatible provider in the `AI 厂商` selector. NodeKey is provided by
+setting that provider's default BaseURL to `https://nodekey.xinghanyun.cn/v1`.
 
-Consequence: future AI settings changes should not replace the provider panel
-layout with a single-provider model picker unless the product requirement
-changes.
+Consequence: future AI settings changes should not re-expose direct named model
+providers unless the product requirement changes.
 
 [PROTOCOL]: Add a new decision when a choice affects future implementation,
 deployment, product behavior, or contributor workflow.

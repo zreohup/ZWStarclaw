@@ -22,8 +22,8 @@ Primary runtime flow:
 5. App state stores the chart and user selections.
 6. UI renders chart, fortune, match, K-line, share, and AI interpretation views.
 7. Knowledge retrieval grounds AI prompts with local structured guidance.
-8. AI interpretation uses the provider selected in settings; the custom
-   OpenAI-compatible provider defaults to the NodeKey BaseURL.
+8. AI interpretation uses the custom OpenAI-compatible provider shown in
+   settings; it defaults to the NodeKey BaseURL.
 
 ## App Module Map
 
@@ -40,8 +40,8 @@ scripts/ - Environment detection and setup automation.
 ## Important Files
 
 - `app/src/components/BirthForm.tsx` - birth input, birthplace matching entry, and true solar time options.
-- `app/src/components/SettingsPanel.tsx` - model provider, API key, BaseURL, and AI settings.
-- `app/src/lib/llm.ts` - multi-provider LLM adapter; custom provider defaults to NodeKey.
+- `app/src/components/SettingsPanel.tsx` - custom OpenAI-compatible provider, API key, BaseURL, and AI settings.
+- `app/src/lib/llm.ts` - LLM adapter; visible provider defaults to NodeKey.
 - `app/src/lib/true-solar-time.ts` - true solar time calculation and birthplace matching helpers.
 - `app/src/lib/birthplace-data.json` - local city/region coordinate dataset.
 - `app/src/lib/birth-date.ts` - birth date handling.

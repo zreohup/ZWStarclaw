@@ -51,7 +51,7 @@
 - Zustand
 - ECharts / Recharts
 - `iztro`
-- Multi-provider LLM adapter with NodeKey as the default OpenAI-compatible BaseURL
+- OpenAI-compatible LLM adapter with NodeKey as the default BaseURL
 
 ## 快速开始
 
@@ -102,15 +102,15 @@ ZWSTARCLAW_PORT=3000 docker compose up --build -d
 
 ## 配置
 
-在应用内打开设置，模型 provider 保留原有布局。推荐选择
-**自定义（OpenAI 兼容）**，默认 BaseURL 为
-`https://nodekey.xinghanyun.cn/v1`，并填写 NodeKey API Key 与可用模型名。
+在应用内打开设置，`AI 厂商` 仅保留 **自定义（OpenAI 兼容）**。
+默认 BaseURL 为 `https://nodekey.xinghanyun.cn/v1`，填写 NodeKey API Key
+与可用模型名即可。
 
 ## 代码位置
 
 - `app/src/` - 前端源码
 - `app/src/components/SettingsPanel.tsx` - 模型 provider 设置界面
-- `app/src/lib/llm.ts` - 多 provider 适配与 NodeKey 默认 BaseURL
+- `app/src/lib/llm.ts` - OpenAI 兼容模型请求与 NodeKey 默认 BaseURL
 - `Dockerfile` / `docker-compose.yml` / `nginx.conf` - Docker 部署
 - `scripts/setup-env.sh` - 系统环境检测与依赖安装脚本
 - `docs/deployment.md` - 部署与启动说明

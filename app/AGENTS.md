@@ -51,8 +51,8 @@ npm run test -- retrieve
 `src/lib/`: Business helpers for date handling, astrology support, true solar
 time, birthplace data, LLM wiring, and scoring.
 
-`src/lib/llm.ts`: Multi-provider LLM adapter; the custom OpenAI-compatible
-provider defaults to the NodeKey BaseURL.
+`src/lib/llm.ts`: LLM adapter; the visible provider selector exposes only the
+custom OpenAI-compatible provider, defaulting to the NodeKey BaseURL.
 
 `src/lib/true-solar-time.ts`: True solar time and birthplace matching logic.
 

@@ -49,6 +49,6 @@ For Vercel or Cloudflare Pages:
 - Build command: `npm run build`
 - Output directory: `dist`
 
-The app is a static frontend. NodeKey can be used through the Custom
+The app is a static frontend. AI access is configured through the Custom
 OpenAI-compatible provider. API keys are configured in the browser settings panel
 and stored locally in the browser.

@@ -56,4 +56,4 @@ docker compose up --build -d
 
 ## 設定
 
-アプリ内の設定画面では、元の provider レイアウトを維持しています。推奨設定は「Custom (OpenAI compatible)」で、既定の BaseURL は `https://nodekey.xinghanyun.cn/v1` です。NodeKey API Key と利用可能なモデル名を入力してください。
+アプリ内の設定画面では、AI provider は「Custom (OpenAI compatible)」のみ表示されます。既定の BaseURL は `https://nodekey.xinghanyun.cn/v1` です。NodeKey API Key と利用可能なモデル名を入力してください。

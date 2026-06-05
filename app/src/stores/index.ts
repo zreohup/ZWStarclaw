@@ -148,12 +148,8 @@ function migrateSettingsState(persistedState: unknown): Partial<SettingsState> {
     deepseek: normalizeProviderSettings(providerSettings.deepseek),
     custom: normalizeProviderSettings(providerSettings.custom || providerSettings.nodekey),
   }
-  const provider: ModelProvider = ['kimi', 'gemini', 'claude', 'deepseek', 'custom'].includes(state.provider || '')
-    ? state.provider as ModelProvider
-    : 'custom'
-
   return {
-    provider,
+    provider: 'custom',
     providerSettings: migratedSettings,
     enableThinking: typeof state.enableThinking === 'boolean' ? state.enableThinking : false,
     enableWebSearch: typeof state.enableWebSearch === 'boolean' ? state.enableWebSearch : false,
