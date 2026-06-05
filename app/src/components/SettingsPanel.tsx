@@ -99,7 +99,7 @@ export function SettingsPanel({ onClose }: SettingsPanelProps) {
   const hasCustomModel = localModel.trim() !== ''
 
   return (
-    <div className="glass p-6 w-full max-w-md max-h-[85vh] overflow-y-auto relative">
+    <div className="glass p-6 w-full max-w-md max-h-[85vh] overflow-y-auto scrollbar-none relative">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-semibold">设置</h2>
         {onClose && (

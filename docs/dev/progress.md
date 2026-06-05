@@ -17,6 +17,7 @@
   intermediate API hint banner from settings.
 - Removed the `高级设置` accordion so Nodekey model, model fetching,
   thinking, and web-search controls sit directly under API Key.
+- Hid the settings modal scrollbar while keeping the modal content scrollable.
 - Added a `获取模型` action beside the Model field to query `/models` with the
   user's API Key against the fixed Nodekey endpoint, then select from returned model IDs; added timeout,
   empty-result feedback, and unit coverage for success and failure paths.

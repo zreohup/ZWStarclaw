@@ -335,6 +335,15 @@ body {
   transform: translateY(-4px);
 }
 
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* 标签激活指示器 */
 .tab-indicator {
   position: relative;
