@@ -35,6 +35,7 @@ Targeted examples:
 ```powershell
 npm run test -- true-solar-time
 npm run test -- retrieve
+npm run test -- llm
 ```
 
 ## Member List
@@ -51,8 +52,12 @@ npm run test -- retrieve
 `src/lib/`: Business helpers for date handling, astrology support, true solar
 time, birthplace data, LLM wiring, and scoring.
 
-`src/lib/llm.ts`: LLM adapter; the visible provider selector exposes only the
-custom OpenAI-compatible provider, defaulting to the NodeKey BaseURL.
+`src/lib/llm.ts`: LLM adapter and OpenAI-compatible model discovery; the visible
+provider selector exposes only the custom provider, defaulting to the NodeKey
+BaseURL.
+
+`src/lib/llm.test.ts`: Unit coverage for OpenAI-compatible model discovery
+success and failure handling.
 
 `src/lib/true-solar-time.ts`: True solar time and birthplace matching logic.
 

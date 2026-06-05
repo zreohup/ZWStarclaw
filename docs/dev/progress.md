@@ -15,6 +15,9 @@
 
 - Limited the visible `AI 厂商` selector to custom OpenAI-compatible access and
   set its default BaseURL to NodeKey.
+- Added a `获取模型` action beside the Model field to query `/models` with the
+  user's API Key and BaseURL, then select from returned model IDs; added timeout,
+  empty-result feedback, and unit coverage for success and failure paths.
 - Renamed the visible product brand to 紫薇Claw across the app shell, generated
   share card watermark, and public docs assets.
 - Added Docker, Docker Compose, Nginx SPA routing, and an environment detection

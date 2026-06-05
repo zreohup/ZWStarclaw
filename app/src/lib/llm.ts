@@ -28,6 +28,11 @@ export interface StreamCallbacks {
 
 export const NODEKEY_BASE_URL = 'https://nodekey.xinghanyun.cn/v1'
 
+export interface OpenAICompatibleModel {
+  id: string
+  ownedBy?: string
+}
+
 /* ------------------------------------------------------------
    Provider 配置（导出供设置面板使用）
    ------------------------------------------------------------ */
@@ -53,6 +58,57 @@ export const PROVIDER_CONFIGS: Record<ModelProvider, { baseUrl: string; defaultM
     baseUrl: NODEKEY_BASE_URL,
     defaultModel: 'gpt-4o-mini',
   },
+}
+
+export async function fetchOpenAICompatibleModels(
+  apiKey: string,
+  baseUrl: string
+): Promise<OpenAICompatibleModel[]> {
+  const trimmedKey = apiKey.trim()
+  if (!trimmedKey) {
+    throw new Error('请先填写 API Key')
+  }
+
+  const normalizedBaseUrl = baseUrl.trim().replace(/\/+$/, '')
+  if (!normalizedBaseUrl) {
+    throw new Error('请先填写 BaseURL')
+  }
+
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 15000)
+
+  let response: Response
+  try {
+    response = await fetch(`${normalizedBaseUrl}/models`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${trimmedKey}`,
+      },
+      signal: controller.signal,
+    })
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      throw new Error('模型获取超时，请检查 BaseURL 或网络')
+    }
+    throw new Error('模型获取失败，请检查 API Key、BaseURL 或网络权限')
+  } finally {
+    clearTimeout(timeoutId)
+  }
+
+  if (!response.ok) {
+    throw new Error(`模型获取失败：${response.status}`)
+  }
+
+  const payload = await response.json()
+  const models = Array.isArray(payload?.data) ? payload.data : []
+
+  return models
+    .map((item: Record<string, unknown>) => ({
+      id: typeof item.id === 'string' ? item.id : '',
+      ownedBy: typeof item.owned_by === 'string' ? item.owned_by : undefined,
+    }))
+    .filter((model: OpenAICompatibleModel) => model.id)
+    .sort((a: OpenAICompatibleModel, b: OpenAICompatibleModel) => a.id.localeCompare(b.id))
 }
 
 /* ------------------------------------------------------------

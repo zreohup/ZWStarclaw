@@ -5,7 +5,7 @@
 The application source lives in `app/`.
 
 - `app/src/` - React and TypeScript application code.
-- `app/src/lib/llm.ts` - multi-provider LLM adapter with NodeKey as the default custom BaseURL.
+- `app/src/lib/llm.ts` - OpenAI-compatible LLM requests and model discovery with NodeKey as the default custom BaseURL.
 - `app/src/components/SettingsPanel.tsx` - provider settings UI.
 - `Dockerfile`, `docker-compose.yml`, `nginx.conf` - Docker production runtime.
 - `scripts/setup-env.sh` - system environment detection and dependency setup.
